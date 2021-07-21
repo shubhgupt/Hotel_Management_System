@@ -6,7 +6,10 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddCustomer extends JFrame implements ActionListener{
     
@@ -158,7 +161,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         b1.setFocusPainted(false);
         add(b1);
         
-        b2 = new JButton("Cancel");
+        b2 = new JButton("Back");
         b2.setBackground(Color.black);
         b2.setForeground(Color.WHITE);
         b2.setBounds(225, 510, 145, 30);
@@ -254,7 +257,79 @@ public class AddCustomer extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == b1){
-            
+            try{
+                String idProof = c1.getSelectedItem();
+                String idNumber = t1.getText();
+                String name = t2.getText();
+                String gender = "";
+                if(r1.isSelected()){
+                    gender = "Male";
+                }else if(r2.isSelected()){
+                    gender = "Female";
+                }
+                String country = t3.getText();
+                int room = Integer.parseInt(ch.getSelectedItem());
+                double price = Double.parseDouble(t4.getText());
+                String checkIn = c2.getSelectedItem();
+                double deposit = Double.parseDouble(t6.getText());
+                double dueAmount = price - deposit;
+                String today = "";
+                if(idNumber.isEmpty() || name.isEmpty() || country.isEmpty() || gender.isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Fill All Fields!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(idProof.equalsIgnoreCase("Adhaar Id") && idProof.length() != 12){
+                    JOptionPane.showMessageDialog(rootPane, "Icorrect Adhaar Number!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    
+                    if(checkIn == "Yes"){
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        Date date =new Date();
+                        today = formatter.format(date);
+                    }
+                    
+                    
+                    c = new Conn();
+                    String generatedKeys[] = {"ID"};
+                    String query = "Insert into customers(id_Proof, id_Number, name, gender, country, roomNumber, check_in, price, depositAmount, Due"
+                            + "Amount, checked_on) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement pt = c.con.prepareStatement(query, generatedKeys);
+                    pt.setString(1, idProof);
+                    pt.setString(2, idNumber);
+                    pt.setString(3, name);
+                    pt.setString(4, gender);
+                    pt.setString(5, country);
+                    pt.setInt(6, room);
+                    pt.setString(7, checkIn);
+                    pt.setDouble(8, price);
+                    pt.setDouble(9, deposit);
+                    pt.setDouble(10, dueAmount);
+                    pt.setString(11, today);
+                    
+                    pt.executeUpdate();
+                    ResultSet rs = pt.getGeneratedKeys();
+                    String query2 = "Update rooms Set Availability = 'Occpied' where roomnumber =" + room;
+                    int result = c.st.executeUpdate(query2);
+                    if(rs.next() && result == 1){
+                        long id = rs.getLong(1);
+                        JOptionPane.showMessageDialog(rootPane," Customer Added Successfully!\n Customer Id is "+id, "Information", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                        new AddCustomer();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(rootPane,"Something Went Wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                
+                
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(rootPane,"Invalid Number Input!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            catch(Exception e){
+//                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(rootPane,e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }else {
             dispose();
             new Reception();
