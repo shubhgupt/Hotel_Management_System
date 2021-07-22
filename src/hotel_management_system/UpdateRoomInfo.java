@@ -14,6 +14,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import static java.awt.image.ImageObserver.HEIGHT;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
@@ -29,7 +30,7 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
     
     UpdateRoomInfo(){
         JPanel p1 = new JPanel();
-        p1.setBounds(0,50, 200, 250);
+        p1.setBounds(0,80, 200, 250);
         p1.setLayout(null);
         p1.setBackground(Color.white);
         add(p1);
@@ -60,7 +61,7 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
         p1.add(price);
         
         JPanel p2 = new JPanel();
-        p2.setBounds(200,50, 180, 250);
+        p2.setBounds(200,80, 180, 250);
         p2.setLayout(null);
         p2.setBackground(Color.white);
         add(p2);
@@ -134,6 +135,8 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
                     String password = JOptionPane.showInputDialog(rootPane, "Enter Admin Password!", "Confirm Admin", HEIGHT);
                     if(password != null)
                         validatePassword(password);
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Select Update Rooms Only to edit Price!", "Warning", HEIGHT);
                 }
             }
         });
@@ -141,7 +144,7 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
         b1 =new JButton("Update");
         b1.setBackground(Color.black);
         b1.setForeground(Color.WHITE);
-        b1.setBounds(60, 310, 145, 30);
+        b1.setBounds(60, 340, 145, 30);
         b1.setFont(new Font("Tahoma", Font.PLAIN, 14));
         b1.addActionListener(this);
         b1.setFocusPainted(false);
@@ -150,17 +153,34 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
         b2 = new JButton("Back");
         b2.setBackground(Color.black);
         b2.setForeground(Color.WHITE);
-        b2.setBounds(230, 310, 145, 30);
+        b2.setBounds(230, 340, 145, 30);
         b2.setFont(new Font("Tahoma", Font.PLAIN, 14));
         b2.addActionListener(this);
         b2.setFocusPainted(false);
         add(b2);
         
-//        setUndecorated(true);
+        ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/seventh.jpg"));
+        Image image = imageIcon.getImage().getScaledInstance(580, 300, Image.SCALE_DEFAULT);
+        JLabel imageLabel = new JLabel(new ImageIcon(image));
+        imageLabel.setBounds(400, 70, 580, 300);
+        add(imageLabel);
+        
+        ImageIcon frameicon = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/bedroom.png"));
+        Image frameImage = frameicon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT);
+        JLabel frameimage = new JLabel(new ImageIcon(frameImage));
+        frameimage.setBounds(5,5,30,30);
+        add(frameimage);
+        
+        JLabel title = new JLabel("Update Room Information");
+        title.setBounds(40, 10, 250, 25);
+        title.setFont(new Font("SERIF", Font.PLAIN, 18));
+        add(title);
+        
+        setUndecorated(true);
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
-        setBounds(600, 250, 900, 450 );
+        setBounds(550, 250, 1000, 420 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
