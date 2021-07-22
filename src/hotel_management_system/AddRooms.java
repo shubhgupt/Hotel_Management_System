@@ -39,6 +39,7 @@ public class AddRooms extends JFrame implements ActionListener{
         c1.setBackground(Color.white);
         c1.setFont(new Font("Tahoma", Font.PLAIN, 14));
         c1.setBounds(190, 90, 170, 25);
+        c1.setFocusable(false);
         add(c1);
         
         JLabel status = new JLabel("Cleaning Status");
@@ -49,6 +50,7 @@ public class AddRooms extends JFrame implements ActionListener{
         c2.setBackground(Color.white);
         c2.setFont(new Font("Tahoma", Font.PLAIN, 14));
         c2.setBounds(190, 140, 170, 25);
+        c2.setFocusable(false);
         add(c2);
         
         JLabel price = new JLabel("Price");
@@ -68,6 +70,7 @@ public class AddRooms extends JFrame implements ActionListener{
         c3.setBackground(Color.white);
         c3.setFont(new Font("Tahoma", Font.PLAIN, 14));
         c3.setBounds(190, 240, 170, 25);
+        c3.setFocusable(false);
         add(c3);
         
         b1 = new JButton("Add Room");

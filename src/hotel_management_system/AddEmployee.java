@@ -66,6 +66,7 @@ public class AddEmployee extends JFrame implements ActionListener{
         c1.setBounds(150, 160, 180, 25);
         c1.setFont(new Font("Tahoma", Font.PLAIN, 14));
         c1.setBackground(Color.white);
+        c1.setFocusable(false);
         add(c1);
         
         JLabel salary = new JLabel("Salary");

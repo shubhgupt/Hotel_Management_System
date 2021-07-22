@@ -195,6 +195,11 @@ public class UpdateCheckIn extends JFrame implements ActionListener{
             }else{
                 t5.setEditable(true);
             }
+            if(rs.getString("Check_In").equals("Yes")){
+                c2.setEnabled(false);
+            }else{
+                c2.setEnabled(true);
+            }
             
         }catch(Exception e){
             System.out.println(e.getMessage());

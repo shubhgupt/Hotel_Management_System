@@ -217,7 +217,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         try{
             
             c = new Conn();
-            String query = "Select * from validate";
+            String query = "Select * from validate Order by ids";
             ResultSet rs = c.st.executeQuery(query);
             while(rs.next()){
                 c1.add(rs.getString("ids"));
@@ -233,7 +233,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         try{
             
             c = new Conn();
-            String query = "Select * from rooms where availability = 'Available'";
+            String query = "Select * from rooms where availability = 'Available' ORDER BY roomNumber";
             ResultSet rs = c.st.executeQuery(query);
             int value;
             boolean flag = true;
@@ -273,6 +273,9 @@ public class AddCustomer extends JFrame implements ActionListener{
                 String checkIn = c2.getSelectedItem();
                 double deposit = Double.parseDouble(t6.getText());
                 double dueAmount = price - deposit;
+                if(dueAmount < 0){
+                    throw new NumberFormatException();
+                }
                 String today = "";
                 if(idNumber.isEmpty() || name.isEmpty() || country.isEmpty() || gender.isEmpty()){
                     JOptionPane.showMessageDialog(rootPane, "Fill All Fields!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -308,7 +311,7 @@ public class AddCustomer extends JFrame implements ActionListener{
                     
                     pt.executeUpdate();
                     ResultSet rs = pt.getGeneratedKeys();
-                    String query2 = "Update rooms Set Availability = 'Occpied' where roomnumber =" + room;
+                    String query2 = "Update rooms Set Availability = 'Occupied' where roomnumber =" + room;
                     int result = c.st.executeUpdate(query2);
                     if(rs.next() && result == 1){
                         long id = rs.getLong(1);

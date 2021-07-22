@@ -230,6 +230,7 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
         
         try{
             c = new Conn();
+            query += " Order By RoomNumber";
             ResultSet rs = c.st.executeQuery(query);
             c2.removeAll();
             boolean flag = true;

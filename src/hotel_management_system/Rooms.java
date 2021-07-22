@@ -80,7 +80,7 @@ public class Rooms extends JFrame implements ActionListener{
             try{
                 
                 Conn c = new Conn();
-                String query = "Select * from rooms";
+                String query = "Select * from rooms Order By RoomNumber";
                 ResultSet rs = c.st.executeQuery(query);
                 if(rs.next()){
                     rs = c.st.executeQuery(query);

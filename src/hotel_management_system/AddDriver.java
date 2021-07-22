@@ -81,6 +81,7 @@ public class AddDriver extends JFrame implements ActionListener{
         c1.setBackground(Color.white);
         c1.setFont(new Font("Tahoma", Font.PLAIN, 15));
         c1.setBounds(190, 290, 170, 25);
+        c1.setFocusable(false);
         add(c1);
         
         
