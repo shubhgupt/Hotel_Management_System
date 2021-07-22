@@ -8,18 +8,22 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
 
-public class UpdateRoomInfo extends JFrame{
+public class UpdateRoomInfo extends JFrame implements ActionListener{
     
     private Choice c1,c2,c3,c4;
     private Conn c;
     private JTextField t1;
+    private JButton b1,b2;
     private String roomQuery1 = "SELECT roomnumber from rooms where roomnumber Not In (Select roomNumber from customers)";
     private String roomQuery2 = "Select RoomNumber from customers where customerId =";
     
@@ -134,11 +138,29 @@ public class UpdateRoomInfo extends JFrame{
             }
         });
         
+        b1 =new JButton("Update");
+        b1.setBackground(Color.black);
+        b1.setForeground(Color.WHITE);
+        b1.setBounds(60, 310, 145, 30);
+        b1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b1.addActionListener(this);
+        b1.setFocusPainted(false);
+        add(b1);
+        
+        b2 = new JButton("Back");
+        b2.setBackground(Color.black);
+        b2.setForeground(Color.WHITE);
+        b2.setBounds(230, 310, 145, 30);
+        b2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b2.addActionListener(this);
+        b2.setFocusPainted(false);
+        add(b2);
+        
 //        setUndecorated(true);
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
-        setBounds(600, 250, 900, 500 );
+        setBounds(600, 250, 900, 450 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
@@ -229,6 +251,43 @@ public class UpdateRoomInfo extends JFrame{
             System.out.println(e.getMessage());
             e.printStackTrace();
             JOptionPane.showMessageDialog(rootPane,"Technical Issue!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == b1){
+            try{
+                String available = c3.getSelectedItem();
+                String status = c4.getSelectedItem();
+                Double price = Double.parseDouble(t1.getText());
+                int room = Integer.parseInt(c2.getSelectedItem());
+                c = new Conn();
+                String query = "Update rooms Set Availability = ?, Status = ?, price = ? where roomNumber = ?";
+                PreparedStatement pt = c.con.prepareStatement(query);
+                pt.setString(1,available);
+                pt.setString(2, status);
+                pt.setDouble(3, price);
+                pt.setInt(4, room);
+                
+                int result = pt.executeUpdate();
+                if(result == 0){
+                    throw new Exception();
+                }else{
+                    JOptionPane.showMessageDialog(rootPane,"Updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                    new UpdateRoomInfo();
+                }
+                
+                
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane,"Technical Issue!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            dispose();
+            new Reception();
         }
     }
     
