@@ -154,7 +154,7 @@ public class Reception extends JFrame implements ActionListener{
             new EmployeeInfo();
         }
         else if(ae.getSource() == b5){
-            
+            new CustomerInfo();
         }
         else if(ae.getSource() == b6){
             new ManagerInfo();
@@ -163,10 +163,10 @@ public class Reception extends JFrame implements ActionListener{
             
         }
         else if(ae.getSource() == b8){
-            
+            new UpdateCheckIn();
         }
         else if(ae.getSource() == b9){
-            
+            new UpdateRoomInfo();
         }
         else if(ae.getSource() == b10){
             

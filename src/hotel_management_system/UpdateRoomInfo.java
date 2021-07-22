@@ -213,6 +213,11 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
             c3.select(rs.getString(1));
             c4.select(rs.getString(2));
             t1.setText(""+rs.getDouble(3));
+            if(c1.getSelectedItem().equals("Update Rooms Only")){
+                c3.setEnabled(true);
+            }else{
+                c3.setEnabled(false);
+            }
             
         }catch(Exception e){
             System.out.println(e.getMessage());

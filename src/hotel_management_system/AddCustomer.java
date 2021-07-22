@@ -277,7 +277,7 @@ public class AddCustomer extends JFrame implements ActionListener{
                 if(idNumber.isEmpty() || name.isEmpty() || country.isEmpty() || gender.isEmpty()){
                     JOptionPane.showMessageDialog(rootPane, "Fill All Fields!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                else if(idProof.equalsIgnoreCase("Adhaar Id") && idProof.length() != 12){
+                else if(idProof.equalsIgnoreCase("Adhaar Id") && idNumber.length() != 12){
                     JOptionPane.showMessageDialog(rootPane, "Icorrect Adhaar Number!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
