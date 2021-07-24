@@ -70,7 +70,7 @@ public class Rooms extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setVisible(true);
-        setBounds(400, 150, 1240, 650);
+        setBounds(380, 200, 1240, 650);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

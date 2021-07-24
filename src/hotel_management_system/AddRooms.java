@@ -103,7 +103,7 @@ public class AddRooms extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.white);
         setLayout(null);
-        setBounds(600, 250, 870, 425 );
+        setBounds(550, 250, 870, 425 );
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

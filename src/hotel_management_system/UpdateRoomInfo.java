@@ -180,7 +180,7 @@ public class UpdateRoomInfo extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
-        setBounds(550, 250, 1000, 420 );
+        setBounds(460, 220, 1000, 420 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     

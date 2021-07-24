@@ -65,7 +65,7 @@ public class ManagerInfo extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
         setVisible(true);
-        setBounds(400, 150, 1200, 650);
+        setBounds(400, 200, 1200, 650);
         
     }
     

@@ -61,7 +61,7 @@ public class EmployeeInfo extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
         setVisible(true);
-        setBounds(400, 150, 1201, 650);
+        setBounds(360, 200, 1201, 650);
     }
     
     public void actionPerformed(ActionEvent ae){

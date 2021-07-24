@@ -14,7 +14,7 @@ public class Reception extends JFrame implements ActionListener{
     Reception(){
         super("Reception");
         
-        b1 = new JButton("New Customer Form");
+        b1 = new JButton("New Guest Form");
         b1.setBackground(Color.black);
         b1.setForeground(Color.white);
         b1.setFocusPainted(false);
@@ -50,7 +50,7 @@ public class Reception extends JFrame implements ActionListener{
         b4.addActionListener(this);
         add(b4);
         
-        b5 = new JButton("Customer Info");
+        b5 = new JButton("Guest Info");
         b5.setBackground(Color.black);
         b5.setForeground(Color.white);
         b5.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -143,7 +143,7 @@ public class Reception extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.white);
         setLayout(null);
-        setBounds(600, 250, 870, 620 );
+        setBounds(520, 200, 870, 620 );
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -157,7 +157,7 @@ public class Reception extends JFrame implements ActionListener{
             new Rooms();
         }
         else if(ae.getSource() == b3){
-            
+            new Departments();
         }
         else if(ae.getSource() == b4){
             new EmployeeInfo();

@@ -136,7 +136,7 @@ public class AddEmployee extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        setBounds(600, 250, 850, 510 );
+        setBounds(540, 220, 850, 510 );
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

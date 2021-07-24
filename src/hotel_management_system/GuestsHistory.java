@@ -131,7 +131,7 @@ public class GuestsHistory extends JFrame implements ActionListener {
         setResizable(false);
         setLayout(null);
         setVisible(true);
-        setBounds(500, 150, 1161, 715);
+        setBounds(380, 200, 1161, 715);
     }
 
     private void searchByName(){

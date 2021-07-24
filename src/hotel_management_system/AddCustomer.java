@@ -182,7 +182,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         frameimage.setBounds(5,5,30,30);
         add(frameimage);
         
-        JLabel title = new JLabel("Add Customer");
+        JLabel title = new JLabel("Add Guest");
         title.setBounds(40, 10, 150, 25);
         title.setFont(new Font("SERIF", Font.PLAIN, 18));
         add(title);
@@ -191,7 +191,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
-        setBounds(600, 250, 800, 600 );
+        setBounds(550, 220, 800, 600 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     

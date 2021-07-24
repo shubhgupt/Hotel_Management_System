@@ -52,7 +52,7 @@ public class CustomerInfo extends JFrame implements ActionListener{
         frameIcon.setBounds(0,0, 30, 30);
         add(frameIcon);
         
-        JLabel title = new JLabel("Customer Information");
+        JLabel title = new JLabel("Guest Information");
         title.setFont(new Font("serif", Font.PLAIN, 18 ));
         title.setBounds(40, 0, 200, 30);
         add(title);
@@ -62,7 +62,7 @@ public class CustomerInfo extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
         setVisible(true);
-        setBounds(350, 150, 1301, 650);
+        setBounds(350, 200, 1301, 650);
     }
     
     public void actionPerformed(ActionEvent ae){

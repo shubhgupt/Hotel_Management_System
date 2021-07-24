@@ -124,7 +124,7 @@ public class AddDriver extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        setBounds(600,250, 910, 520);
+        setBounds(505,220, 910, 520);
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         

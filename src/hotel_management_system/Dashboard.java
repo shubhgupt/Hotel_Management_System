@@ -87,6 +87,7 @@ public class Dashboard extends JFrame implements ActionListener{
         setIconImage(Ic5);
         setLayout(null);
         setBounds(0, 0, 1950, 1000);
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

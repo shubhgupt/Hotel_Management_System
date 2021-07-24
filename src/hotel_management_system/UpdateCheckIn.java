@@ -174,7 +174,7 @@ public class UpdateCheckIn extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setVisible(true);
-        setBounds(550, 250, 1000, 500 );
+        setBounds(460, 200, 1000, 500 );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
