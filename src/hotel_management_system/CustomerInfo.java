@@ -70,7 +70,7 @@ public class CustomerInfo extends JFrame implements ActionListener{
             try{
                 
                 Conn c = new Conn();
-                String query = "Select * from customers";
+                String query = "Select * from customers Order by CustomerId";
                 ResultSet rs = c.st.executeQuery(query);
                 if(rs.next()){
                     rs = c.st.executeQuery(query);
@@ -78,13 +78,12 @@ public class CustomerInfo extends JFrame implements ActionListener{
                     t.setModel(DbUtils.resultSetToTableModel(rs));
                     
                 }else{
-                    JOptionPane.showMessageDialog(rootPane,"Unable to fetch Data!", "Error", JOptionPane.ERROR_MESSAGE);
+                    throw new Exception("No Guests Present!");
                 }
                 
             }
             catch(Exception e){
-                System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(rootPane,"Something Went Wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane,e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }else if(ae.getSource() == b2){
             dispose();

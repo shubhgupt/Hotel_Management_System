@@ -278,10 +278,10 @@ public class AddCustomer extends JFrame implements ActionListener{
                 }
                 String today = "";
                 if(idNumber.isEmpty() || name.isEmpty() || country.isEmpty() || gender.isEmpty()){
-                    JOptionPane.showMessageDialog(rootPane, "Fill All Fields!", "Error", JOptionPane.ERROR_MESSAGE);
+                    throw new Exception("Empty Fields!");
                 }
                 else if(idProof.equalsIgnoreCase("Adhaar Id") && idNumber.length() != 12){
-                    JOptionPane.showMessageDialog(rootPane, "Icorrect Adhaar Number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    throw new Exception("Invalid Adhaar Number!");
                 }
                 else{
                     
@@ -317,7 +317,7 @@ public class AddCustomer extends JFrame implements ActionListener{
                         long id = rs.getLong(1);
                         JOptionPane.showMessageDialog(rootPane," Customer Added Successfully!\n Customer Id is "+id, "Information", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
-                        new AddCustomer();
+                        new Reception();
                     }
                     else{
                         JOptionPane.showMessageDialog(rootPane,"Something Went Wrong!", "Error", JOptionPane.ERROR_MESSAGE);

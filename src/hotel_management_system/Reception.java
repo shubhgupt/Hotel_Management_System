@@ -9,7 +9,7 @@ import java.awt.Image;
 import java.awt.event.*;
 
 public class Reception extends JFrame implements ActionListener{
-    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12;
+    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12,  b13;
     
     Reception(){
         super("Reception");
@@ -113,7 +113,7 @@ public class Reception extends JFrame implements ActionListener{
         b11.addActionListener(this);
         add(b11);
         
-        b12 = new JButton("Log Out");
+        b12 = new JButton("Guests History");
         b12.setBackground(Color.black);
         b12.setForeground(Color.white);
         b12.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -122,11 +122,20 @@ public class Reception extends JFrame implements ActionListener{
         b12.addActionListener(this);
         add(b12);
         
+        b13 = new JButton("Log Out");
+        b13.setBackground(Color.black);
+        b13.setForeground(Color.white);
+        b13.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        b13.setBounds(10, 510, 200, 30);
+        b13.setFocusPainted(false);
+        b13.addActionListener(this);
+        add(b13);
+        
         ImageIcon i = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/fourth.jpg"));
-        Image I = i.getImage().getScaledInstance(550, 470, Image.SCALE_DEFAULT);
+        Image I = i.getImage().getScaledInstance(590, 510, Image.SCALE_DEFAULT);
         i = new ImageIcon(I);
         JLabel image = new JLabel(i);
-        image.setBounds(230, 30, 550, 470);
+        image.setBounds(235, 30, 590, 510);
         add(image);
         
         ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/reception.png"));
@@ -134,7 +143,7 @@ public class Reception extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.white);
         setLayout(null);
-        setBounds(600, 250, 820, 580 );
+        setBounds(600, 250, 870, 620 );
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -160,7 +169,7 @@ public class Reception extends JFrame implements ActionListener{
             new ManagerInfo();
         }
         else if(ae.getSource() == b7){
-            
+            new CheckOut();
         }
         else if(ae.getSource() == b8){
             new UpdateCheckIn();
@@ -173,6 +182,9 @@ public class Reception extends JFrame implements ActionListener{
         }
         else if(ae.getSource() == b11){
             
+        }
+        else if(ae.getSource() == b12){
+            new GuestsHistory();
         }
         dispose();
         

@@ -93,7 +93,7 @@ public class CheckOut extends JFrame implements ActionListener{
             }
         });
         
-        b1 =new JButton("Update");
+        b1 =new JButton("Check Out");
         b1.setBackground(Color.black);
         b1.setForeground(Color.WHITE);
         b1.setBounds(60, 120, 145, 30);
@@ -164,7 +164,7 @@ public class CheckOut extends JFrame implements ActionListener{
         try{
             
             cn = new Conn();
-            String query = "Select customerId from customers where check_in = 'Yes'";
+            String query = "Select customerId from customers where check_in = 'Yes' Order By customerId";
             ResultSet rs = cn.st.executeQuery(query);
             while(rs.next()){
                 isDataPresent = true;

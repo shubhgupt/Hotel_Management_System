@@ -14,7 +14,6 @@ public class EmployeeInfo extends JFrame implements ActionListener{
     
     JTable t;
     JButton b1, b2;
-    JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9;
     
     EmployeeInfo(){
         t = new JTable();
@@ -78,13 +77,13 @@ public class EmployeeInfo extends JFrame implements ActionListener{
                     t.setModel(DbUtils.resultSetToTableModel(rs));
                     
                 }else{
-                    JOptionPane.showMessageDialog(rootPane,"Unable to fetch Data!", "Error", JOptionPane.ERROR_MESSAGE);
+                    throw new Exception("No Employee Info Available!");
                 }
                 
             }
             catch(Exception e){
                 System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(rootPane,"Something Went Wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane,e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }else if(ae.getSource() == b2){
             dispose();
