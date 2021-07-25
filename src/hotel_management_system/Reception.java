@@ -181,7 +181,7 @@ public class Reception extends JFrame implements ActionListener{
             
         }
         else if(ae.getSource() == b11){
-            
+            new SearchRoom();
         }
         else if(ae.getSource() == b12){
             new GuestsHistory();

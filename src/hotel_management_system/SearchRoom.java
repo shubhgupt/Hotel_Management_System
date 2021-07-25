@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
 
 public class SearchRoom extends JFrame implements ActionListener{
@@ -54,6 +56,7 @@ public class SearchRoom extends JFrame implements ActionListener{
         c1.setFont(new Font("Tahoma", Font.PLAIN, 14));
         c1.setFocusable(false);
         c1.setBounds(120, 0, 180, 25);
+        c1.add("Any Type");
         c1.add("Single Bed");
         c1.add("Double Bed");
         search.add(c1);
@@ -82,14 +85,10 @@ public class SearchRoom extends JFrame implements ActionListener{
            } 
         });
         
-        
-        
         JLabel l2 = new JLabel("Only Display Available");
         l2.setBounds(390, 0, 200, 25);
         l2.setFont(new Font("Tahoma", Font.PLAIN, 17));
         search.add(l2);
-        
-        
         
         JLabel l3 = new JLabel("Price Less Than:");
         l3.setBounds(630, 0, 130, 25);
@@ -99,8 +98,7 @@ public class SearchRoom extends JFrame implements ActionListener{
         t1 = new JTextField();
         t1.setBounds(770, 0, 180, 25 );
         t1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        search.add(t1);
-        
+        search.add(t1);        
 
         b1 = new JButton("Load Data");
         b1.setBackground(Color.black);
@@ -120,13 +118,13 @@ public class SearchRoom extends JFrame implements ActionListener{
         b2.addActionListener(this);
         main.add(b2);
 
-        ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/history.png"));
+        ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/door.png"));
         Image Ic = ic.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
         JLabel frameIcon = new JLabel(new ImageIcon(Ic));
         frameIcon.setBounds(0, 0, 30, 30);
         add(frameIcon);
 
-        JLabel title = new JLabel("Guests History");
+        JLabel title = new JLabel("Room Search");
         title.setFont(new Font("serif", Font.PLAIN, 18));
         title.setBounds(35, 0, 200, 30);
         add(title);
@@ -137,7 +135,7 @@ public class SearchRoom extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
         setVisible(true);
-        setBounds(380, 200, 970, 685);
+        setBounds(475, 200, 970, 685);
         
     }
     public void checkLabelClicked(){
@@ -151,6 +149,70 @@ public class SearchRoom extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == b1){
+            
+            try{
+                
+                String bedType = c1.getSelectedItem();
+                String price = t1.getText();
+                String query = "";
+                
+                if(bedType.equals("Any Type")){
+                    
+                    if(price.equals("")){
+                        if(checkLabel.isVisible()){
+                            query = "Select * from rooms where availability = 'Available' Order by RoomNumber";
+                        }
+                        else{
+                            query = "Select * from rooms order by RoomNumber";
+                        }
+                    }
+                    else{
+                        double rprice = Double.parseDouble(price);
+                        if(checkLabel.isVisible()){
+                            query = "Select * from rooms where availability = 'Available' and price <= "+rprice+" Order by roomNumber";
+                        }
+                        else{
+                            query = "Select * from rooms where price <= "+rprice+" Order by roomNumber";
+                        }
+                    }
+                }
+                else{
+                    
+                    if(price.equals("")){
+                        if(checkLabel.isVisible()){
+                            query = "Select * from rooms where availability = 'Available' and `Bed Type` = '"+bedType+"' Order by RoomNumber";
+                        }
+                        else{
+                            query = "Select * from rooms where `Bed Type` = '"+bedType+"' order by RoomNumber";
+                        }
+                    }
+                    else{
+                        double rprice = Double.parseDouble(price);
+                        if(checkLabel.isVisible()){
+                            query = "Select * from rooms where availability = 'Available' and `Bed Type` = '"+bedType+"' and price <= "+rprice+" Order by roomNumber";
+                        }
+                        else{
+                            query = "Select * from rooms where `Bed Type` = '"+bedType+"' and price <= "+rprice+" Order by roomNumber";
+                        }
+                    }
+                }
+                
+                c = new Conn();
+                ResultSet rs = c.st.executeQuery(query);
+                if(rs.next()){
+                    rs = c.st.executeQuery(query);
+                    t.setModel(DbUtils.resultSetToTableModel(rs));
+                }else{
+                    throw new Exception("Sorry! No Such Room Present!");
+                }
+                
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(rootPane, "Invalid Price!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
             
         }else{
             dispose();
