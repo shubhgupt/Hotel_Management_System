@@ -178,7 +178,7 @@ public class Reception extends JFrame implements ActionListener{
             new UpdateRoomInfo();
         }
         else if(ae.getSource() == b10){
-            
+            new PickUpService();
         }
         else if(ae.getSource() == b11){
             new SearchRoom();

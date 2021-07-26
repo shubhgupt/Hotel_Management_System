@@ -136,7 +136,7 @@ public class SearchRoom extends JFrame implements ActionListener{
         setLayout(null);
         setVisible(true);
         setBounds(475, 200, 970, 685);
-        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void checkLabelClicked(){
         checkLabel.setVisible(false);
