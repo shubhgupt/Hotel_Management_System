@@ -233,7 +233,7 @@ public class AddCustomer extends JFrame implements ActionListener{
         try{
             
             c = new Conn();
-            String query = "Select * from rooms where availability = 'Available' ORDER BY roomNumber";
+            String query = "Select * from rooms where availability = 'Available' and status = 'Cleaned' ORDER BY roomNumber";
             ResultSet rs = c.st.executeQuery(query);
             int value;
             boolean flag = true;

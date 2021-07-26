@@ -113,7 +113,7 @@ public class PickUpService extends JFrame implements ActionListener{
         try{
             
             c = new Conn();
-            String query = "Select carCompany from drivers order by carcompany";
+            String query = "Select Distinct carCompany from drivers order by carcompany";
             ResultSet rs  = c.st.executeQuery(query);
             while(rs.next()){
                 c1.add(rs.getString(1));
