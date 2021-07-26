@@ -9,7 +9,7 @@ import java.awt.Image;
 import java.awt.event.*;
 
 public class Reception extends JFrame implements ActionListener{
-    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12,  b13;
+    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12,  b13, b14;
     
     Reception(){
         super("Reception");
@@ -23,7 +23,7 @@ public class Reception extends JFrame implements ActionListener{
         b1.addActionListener(this);
         add(b1);
         
-        b2 = new JButton("Room");
+        b2 = new JButton("Search Room");
         b2.setBackground(Color.black);
         b2.setForeground(Color.white);
         b2.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -32,7 +32,7 @@ public class Reception extends JFrame implements ActionListener{
         b2.addActionListener(this);
         add(b2);
         
-        b3 = new JButton("Department");
+        b3 = new JButton("Pick Up Service");
         b3.setBackground(Color.black);
         b3.setForeground(Color.white);
         b3.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -41,7 +41,7 @@ public class Reception extends JFrame implements ActionListener{
         b3.addActionListener(this);
         add(b3);
         
-        b4 = new JButton("All Employee Info");
+        b4 = new JButton("Check Out");
         b4.setBackground(Color.black);
         b4.setForeground(Color.white);
         b4.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -50,7 +50,7 @@ public class Reception extends JFrame implements ActionListener{
         b4.addActionListener(this);
         add(b4);
         
-        b5 = new JButton("Guest Info");
+        b5 = new JButton("Update Check Status");
         b5.setBackground(Color.black);
         b5.setForeground(Color.white);
         b5.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -59,7 +59,7 @@ public class Reception extends JFrame implements ActionListener{
         b5.addActionListener(this);
         add(b5);
         
-        b6 = new JButton("Manager Info");
+        b6 = new JButton("Updata Room Status");
         b6.setBackground(Color.black);
         b6.setForeground(Color.white);
         b6.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -68,7 +68,7 @@ public class Reception extends JFrame implements ActionListener{
         b6.addActionListener(this);
         add(b6);
         
-        b7 = new JButton("Check Out");
+        b7 = new JButton("Update Driver Info");
         b7.setBackground(Color.black);
         b7.setForeground(Color.white);
         b7.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -77,7 +77,7 @@ public class Reception extends JFrame implements ActionListener{
         b7.addActionListener(this);
         add(b7);
         
-        b8 = new JButton("Update Check Status");
+        b8 = new JButton("Update Department Info");
         b8.setBackground(Color.black);
         b8.setForeground(Color.white);
         b8.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -86,7 +86,7 @@ public class Reception extends JFrame implements ActionListener{
         b8.addActionListener(this);
         add(b8);
         
-        b9 = new JButton("Update Room Status");
+        b9 = new JButton("Guests Info");
         b9.setBackground(Color.black);
         b9.setForeground(Color.white);
         b9.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -95,7 +95,7 @@ public class Reception extends JFrame implements ActionListener{
         b9.addActionListener(this);
         add(b9);
         
-        b10 = new JButton("Pick up Service");
+        b10 = new JButton("Rooms Info");
         b10.setBackground(Color.black);
         b10.setForeground(Color.white);
         b10.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -104,7 +104,7 @@ public class Reception extends JFrame implements ActionListener{
         b10.addActionListener(this);
         add(b10);
         
-        b11 = new JButton("Search Room");
+        b11 = new JButton("Managers Info");
         b11.setBackground(Color.black);
         b11.setForeground(Color.white);
         b11.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -113,7 +113,7 @@ public class Reception extends JFrame implements ActionListener{
         b11.addActionListener(this);
         add(b11);
         
-        b12 = new JButton("Guests History");
+        b12 = new JButton("All Employees Info");
         b12.setBackground(Color.black);
         b12.setForeground(Color.white);
         b12.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -122,7 +122,7 @@ public class Reception extends JFrame implements ActionListener{
         b12.addActionListener(this);
         add(b12);
         
-        b13 = new JButton("Log Out");
+        b13 = new JButton("Department Info");
         b13.setBackground(Color.black);
         b13.setForeground(Color.white);
         b13.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -131,11 +131,20 @@ public class Reception extends JFrame implements ActionListener{
         b13.addActionListener(this);
         add(b13);
         
+        b14 = new JButton("Guests History");
+        b14.setBackground(Color.black);
+        b14.setForeground(Color.white);
+        b14.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        b14.setBounds(10, 550, 200, 30);
+        b14.setFocusPainted(false);
+        b14.addActionListener(this);
+        add(b14);
+        
         ImageIcon i = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/fourth.jpg"));
-        Image I = i.getImage().getScaledInstance(590, 510, Image.SCALE_DEFAULT);
+        Image I = i.getImage().getScaledInstance(590, 550, Image.SCALE_DEFAULT);
         i = new ImageIcon(I);
         JLabel image = new JLabel(i);
-        image.setBounds(235, 30, 590, 510);
+        image.setBounds(235, 30, 590, 550);
         add(image);
         
         ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/reception.png"));
@@ -143,7 +152,7 @@ public class Reception extends JFrame implements ActionListener{
         setIconImage(Ic);
         getContentPane().setBackground(Color.white);
         setLayout(null);
-        setBounds(520, 200, 870, 620 );
+        setBounds(520, 200, 870, 660 );
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -154,40 +163,45 @@ public class Reception extends JFrame implements ActionListener{
             new AddCustomer();
         }
         else if(ae.getSource() == b2){
-            new Rooms();
-        }
-        else if(ae.getSource() == b3){
-            new Departments();
-        }
-        else if(ae.getSource() == b4){
-            new EmployeeInfo();
-        }
-        else if(ae.getSource() == b5){
-            new CustomerInfo();
-        }
-        else if(ae.getSource() == b6){
-            new ManagerInfo();
-        }
-        else if(ae.getSource() == b7){
-            new CheckOut();
-        }
-        else if(ae.getSource() == b8){
-            new UpdateCheckIn();
-        }
-        else if(ae.getSource() == b9){
-            new UpdateRoomInfo();
-        }
-        else if(ae.getSource() == b10){
-            new PickUpService();
-        }
-        else if(ae.getSource() == b11){
             new SearchRoom();
         }
+        else if(ae.getSource() == b3){
+            new PickUpService();
+        }
+        else if(ae.getSource() == b4){
+            new CheckOut();
+        }
+        else if(ae.getSource() == b5){
+            new UpdateCheckIn();
+        }
+        else if(ae.getSource() == b6){
+            new UpdateRoomInfo();
+        }
+        else if(ae.getSource() == b7){
+            new UpdateDriver();
+        }
+        else if(ae.getSource() == b8){
+            new UpdateDepartments();
+        }
+        else if(ae.getSource() == b9){
+            new CustomerInfo();
+        }
+        else if(ae.getSource() == b10){
+            new Rooms();
+        }
+        else if(ae.getSource() == b11){
+            new ManagerInfo();
+        }
         else if(ae.getSource() == b12){
+            new EmployeeInfo();
+        }
+        else if(ae.getSource() == b13){
+            new Departments();
+        }
+        else if(ae.getSource() == b14){
             new GuestsHistory();
         }
         dispose();
-        
     }
     
     public static void main(String[] args) {

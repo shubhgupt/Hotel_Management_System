@@ -134,6 +134,8 @@ public class AddEmployee extends JFrame implements ActionListener{
         ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/employee.png"));
         Image Ic = ic.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
         setIconImage(Ic);
+        
+        setResizable(false);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setBounds(540, 220, 850, 510 );

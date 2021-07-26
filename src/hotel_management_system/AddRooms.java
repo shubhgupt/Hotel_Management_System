@@ -101,6 +101,8 @@ public class AddRooms extends JFrame implements ActionListener{
         ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/door.png"));
         Image Ic = ic.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT);
         setIconImage(Ic);
+        
+        setResizable(false);
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setBounds(550, 250, 870, 425 );

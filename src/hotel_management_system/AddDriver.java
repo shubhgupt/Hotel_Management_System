@@ -130,6 +130,8 @@ public class AddDriver extends JFrame implements ActionListener{
         ImageIcon ic = new ImageIcon(ClassLoader.getSystemResource("hotel_management_system/icons/car.png"));
         Image Ic = ic.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         setIconImage(Ic);
+        
+        setResizable(false);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setBounds(505,210, 930, 570);

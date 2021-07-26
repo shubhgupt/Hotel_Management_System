@@ -277,6 +277,8 @@ public class UpdateDriver extends JFrame implements ActionListener{
                 int result = pt.executeUpdate();
                 if(result == 1){
                     JOptionPane.showMessageDialog(rootPane, "Data Updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                    new Reception();
                 }else{
                     throw new Exception("Invalid Driver Id!");
                 }
